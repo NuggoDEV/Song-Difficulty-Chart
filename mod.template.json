@@ -1,0 +1,13 @@
+{
+  "_QPVersion": "1.0.0",
+  "name": "Song Difficulty Chart",
+  "id": "SongDifficultyChart",
+  "author": "Nuggo",
+  "version": "1.25.1",
+  "description": "View song difficulty on a graph mid-song",
+  "dependencies": [],
+  "modFiles": [],
+  "libraryFiles": [],
+  "fileCopies": [],
+  "copyExtensions": []
+}
