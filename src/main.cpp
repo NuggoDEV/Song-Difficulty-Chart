@@ -1,4 +1,13 @@
 #include "main.hpp"
+#include "ModUI/SongDifficultyChartUI.hpp"
+using namespace SongDifficultyChart::UI;
+
+#include "Hooks.hpp"
+#include "ModConfig.hpp"
+
+#include "questui/shared/QuestUI.hpp"
+
+DEFINE_CONFIG(ModConfig);
 
 static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to the modloader upon startup
 
@@ -29,7 +38,15 @@ extern "C" void setup(ModInfo& info) {
 extern "C" void load() {
     il2cpp_functions::Init();
 
+    getModConfig().Init(modInfo);
+
+    QuestUI::Init();
+    QuestUI::Register::RegisterMainMenuModSettingsViewController<SongDifficultyChartUI *>(modInfo, "Song Difficulty Chart");
+
     getLogger().info("Installing hooks...");
-    // Install our hooks (none defined yet)
+    
+    auto &logger = getLogger();
+    Hooks::InstallHooks(logger);
+
     getLogger().info("Installed all hooks!");
 }
